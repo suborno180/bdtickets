@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import divisionsReducer from './features/divisionsSlice';
+import filterTicketsReducer from './features/filterTicketsSlice';
 
 export const store = configureStore({
   reducer: {
-    divisions: divisionsReducer,
+    filterTickets: filterTicketsReducer,
   },
 })
 

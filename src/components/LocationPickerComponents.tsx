@@ -1,10 +1,13 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { LuSearch } from "react-icons/lu";
 import { RxCross2 } from "react-icons/rx";
 import { ApiData } from "./FitterSection_mobile";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { setGoingFrom, setGoingTo } from "@/redux/features/filterTicketsSlice";
 
 interface LocationPickerProps {
   goingFrom: string;
@@ -27,8 +30,6 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
       .then((res) => res.json())
       .then((json) => setApiData(json.data));
   }, []);
-
-  console.log(isApiData);
 
   const handelFromCityPickerActive = () => {
     setCityFromPickerActive(true);
@@ -54,11 +55,28 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
     student.division.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handelGoingFromList = () => {
+  const handelGoingFromList = (event: ChangeEvent<HTMLInputElement>) => {
+    const { innerText } = event.target;
     setCityFromPickerActive(false);
+    // redux function
+    dispatch(setGoingFrom(innerText));
   };
-  const handelGoingToList = () => {
+  const handelGoingToList = (event: ChangeEvent<HTMLInputElement>) => {
+    const { innerText } = event.target;
     setCityToPickerActive(false);
+    // redux function
+    dispatch(setGoingTo(innerText));
+  };
+
+  // Redux
+
+  const dispatch = useDispatch();
+  const filterTickets = useSelector((state: RootState) => state.filterTickets);
+
+  const exchangeCityHandeler = (from: string, to: string) => {
+    dispatch(setGoingFrom(to));
+    dispatch(setGoingTo(from));
+    
   };
 
   return (
@@ -74,7 +92,9 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
             </div>
             <div>
               <span className="font-bold text-black text-[12px]">
-                {goingFrom}
+                {filterTickets.goingFrom.length <= 0
+                  ? "Select City"
+                  : filterTickets.goingFrom}
               </span>
             </div>
           </div>
@@ -123,7 +143,15 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
               </div>
             </div>
           )}
-          <button className="w-[25px] h-[25px] border border-red-600 p-1 absolute top-[25%] -right-[13px] z-10 bg-white rounded-full hover:bg-red-200 focus:scale-90">
+          <button
+            className="w-[25px] h-[25px] border border-red-600 p-1 absolute top-[25%] -right-[13px] z-10 bg-white rounded-full hover:bg-red-200 focus:scale-90"
+            onClick={() =>
+              exchangeCityHandeler(
+                filterTickets.goingFrom,
+                filterTickets.goingTo
+              )
+            }
+          >
             {/* Exchange button */}
             <Image
               src="/swap-red-light.svg"
@@ -141,7 +169,9 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
               </div>
               <div>
                 <span className="font-bold text-black text-[12px]">
-                  Destination
+                  {filterTickets.goingTo.length <= 0
+                    ? "Select City"
+                    : filterTickets.goingTo}
                 </span>
               </div>
             </div>
