@@ -19,11 +19,11 @@ const FitterSection = () => {
     { label: "DEALS", icon: "/offer-alt-copy2.svg" },
   ];
   return (
-    <div className="w-full min-h-[50vh] bg-[url(/banner-web.png)] bg-center bg-cover bg-no-repeat relative">
+    <div className="w-full min-h-[50vh] bg-[url(/banner-web.png)] bg-center bg-cover bg-no-repeat relative ">
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
         <div className="container mx-auto px-4">
-          <div className="max-w-screen-lg mx-auto rounded-lg p-8">
+          <div className="max-w-screen-lg mx-auto rounded-lg p-8 translate-y-10">
             {/* Your content goes here */}
             <div className="max-w-[70%] lg:max-w-[50%] min-h-[70px] mx-auto bg-white rounded-xl rounded-b-none">
               <div className="p-4">
@@ -58,7 +58,7 @@ const FitterSection = () => {
                   </div>
                 </div>
                 <div className="grid place-content-center translate-y-5">
-                  <button className="bg-red-500 hover:bg-red-600 p-3 px-10 rounded-lg">Search Bus</button>
+                  <button className="bg-red-600 hover:bg-red-700 p-3 px-10 rounded-lg text-white">Search Bus</button>
                 </div>
               </div>
             </div>

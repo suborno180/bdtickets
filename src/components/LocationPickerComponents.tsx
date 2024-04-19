@@ -98,7 +98,7 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
               </div>
             </div>
           )}
-          <button className="w-[25px] h-[25px] border border-red-600 p-1 absolute top-[25%] -right-[13px] bg-white rounded-full hover:bg-red-200 focus:scale-90">
+          <button className="w-[25px] h-[25px] border border-red-600 p-1 absolute top-[25%] -right-[13px] z-30 bg-white rounded-full hover:bg-red-200 focus:scale-90">
             {/* Exchange button */}
             <Image
               src="/swap-red-light.svg"
