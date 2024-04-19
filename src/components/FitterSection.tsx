@@ -30,7 +30,7 @@ const FitterSection = () => {
                 <FilterTab tabs={tabsData} />
               </div>
             </div>
-            <div className="w-full h-52 p-10 bg-white rounded-xl grid grid-rows-2">
+            <div className="w-full h-52 p-10 pb-0 bg-white rounded-xl grid grid-rows-2">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <LocationPickerComponents
@@ -57,7 +57,9 @@ const FitterSection = () => {
                     </div>
                   </div>
                 </div>
-                <div className="grid place-content-center"></div>
+                <div className="grid place-content-center translate-y-5">
+                  <button className="bg-red-500 hover:bg-red-600 p-3 px-10 rounded-lg">Search Bus</button>
+                </div>
               </div>
             </div>
           </div>
