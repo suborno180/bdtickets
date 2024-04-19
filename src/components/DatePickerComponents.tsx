@@ -85,7 +85,7 @@ const DatePickerComponents: React.FC<LocationPickerProps> = ({
               <span className="text-black text-[10px]">JOURNEY DATE</span>
             </div>
      
-            <input onChange={handelDate} type="date" className="text-black text-[12px] bg-transparent outline-none font-bold" name="" id="datePicker"  />
+            <input value={filterTickets.journeyDate} onChange={handelDate} type="date" className="text-black text-[12px] bg-transparent outline-none font-bold" name="" id="datePicker"  />
           </div>
           
 
