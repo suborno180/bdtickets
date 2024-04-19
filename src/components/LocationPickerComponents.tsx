@@ -37,23 +37,6 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
     setCityToPickerActive(false);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event:any) => {
-      if (
-        event.target.closest(".city-picker") === null &&
-        (isCityFromPickerActive || isCityToPickerActive)
-      ) {
-        handelFromCityPickerDeactive();
-        handelToCityPickerDeactive();
-      }
-    };
-  
-    document.addEventListener("click", handleClickOutside);
-  
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [isCityFromPickerActive, isCityToPickerActive]);
 
   return (
     <div className="w-full">
@@ -139,6 +122,7 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
             </div>
           </div>
           {isCityToPickerActive && (
+            // location picker input search box
             <div>
               <div className="fixed z-50 md:absolute top-0 left-0 md:top-20 md:left-6 w-full md:min-w-72 md:rounded-md  md:max-w-72  md:max-h-80 bg-white shadow-lg overflow-hidden">
                 <div className="w-full min-h-12 flex border-b-2">
