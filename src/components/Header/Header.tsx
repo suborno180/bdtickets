@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <motion.header
-      className={`fixed top-0 w-full py-4 z-10 ${
+      className={`fixed top-0 w-full py-4 z-50 ${
         isScrolled
           ? "bg-white shadow-md transition-all"
           : "bg-white/50 transition-all backdrop-blur-sm"
@@ -33,7 +33,7 @@ const Header = () => {
         transition: { duration: 0.2, ease: "easeInOut" },
       }}
     >
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
           <div className="flex items-center">
             <Image

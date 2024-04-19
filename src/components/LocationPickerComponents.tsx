@@ -4,22 +4,31 @@ import React, { useEffect, useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { LuSearch } from "react-icons/lu";
 import { RxCross2 } from "react-icons/rx";
-
-interface City {
-  name: string;
-}
+import { ApiData } from "./FitterSection_mobile";
 
 interface LocationPickerProps {
   goingFrom: string;
-  cities: City[];
+  cities: any;
+  apiData?: any;
 }
 
 const LocationPickerComponents: React.FC<LocationPickerProps> = ({
   goingFrom,
   cities,
+  apiData,
 }) => {
   const [isCityFromPickerActive, setCityFromPickerActive] = useState(false);
   const [isCityToPickerActive, setCityToPickerActive] = useState(false);
+  const [isApiData, setApiData] = useState<ApiData[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    fetch("https://bdapis.com/api/v1.1/divisions")
+      .then((res) => res.json())
+      .then((json) => setApiData(json.data));
+  }, []);
+
+  console.log(isApiData);
 
   const handelFromCityPickerActive = () => {
     setCityFromPickerActive(true);
@@ -36,6 +45,16 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
   const handelToCityPickerDeactive = () => {
     setCityToPickerActive(false);
   };
+
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredApiData = isApiData.filter((student) =>
+    student.division.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+const df = 0;
 
 
   return (
@@ -73,6 +92,8 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
                       type="text"
                       className="w-full h-12 text-black px-2 focus:outline-none"
                       placeholder="Search by city"
+                      value={searchTerm}
+                      onChange={handleSearch}
                     />
                   </div>
                   <div
@@ -84,13 +105,13 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
                 </div>
                 <div className="w-full h-full">
                   <ul className="w-full min-h-[90vh] max-h-64 overflow-y-auto">
-                    {cities.map((city, index) => (
+                    {filteredApiData.map((city, index) => (
                       <li
                         key={index}
                         className="text-black p-4 hover:bg-gray-100 cursor-pointer"
                         onClick={handelFromCityPickerDeactive}
                       >
-                        {city.name}
+                        {city.division}
                       </li>
                     ))}
                   </ul>
@@ -98,7 +119,7 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
               </div>
             </div>
           )}
-          <button className="w-[25px] h-[25px] border border-red-600 p-1 absolute top-[25%] -right-[13px] z-30 bg-white rounded-full hover:bg-red-200 focus:scale-90">
+          <button className="w-[25px] h-[25px] border border-red-600 p-1 absolute top-[25%] -right-[13px] z-10 bg-white rounded-full hover:bg-red-200 focus:scale-90">
             {/* Exchange button */}
             <Image
               src="/swap-red-light.svg"
@@ -140,6 +161,8 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
                       type="text"
                       className="w-full h-12 text-black px-2 focus:outline-none"
                       placeholder="Search by city"
+                      value={searchTerm}
+                      onChange={handleSearch}
                     />
                   </div>
                   <div
@@ -151,13 +174,13 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
                 </div>
                 <div className="w-full h-full">
                   <ul className="w-full min-h-[90vh] max-h-64 overflow-y-auto">
-                    {cities.map((city, index) => (
+                    {filteredApiData.map((city, index) => (
                       <li
                         key={index}
                         className="text-black p-4 hover:bg-gray-100 cursor-pointer"
                         onClick={handelToCityPickerDeactive}
                       >
-                        {city.name}
+                        {city.division}
                       </li>
                     ))}
                   </ul>
