@@ -54,8 +54,12 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
     student.division.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-const df = 0;
-
+  const handelGoingFromList = () => {
+    setCityFromPickerActive(false);
+  };
+  const handelGoingToList = () => {
+    setCityToPickerActive(false);
+  };
 
   return (
     <div className="w-full">
@@ -109,7 +113,7 @@ const df = 0;
                       <li
                         key={index}
                         className="text-black p-4 hover:bg-gray-100 cursor-pointer"
-                        onClick={handelFromCityPickerDeactive}
+                        onClick={handelGoingFromList}
                       >
                         {city.division}
                       </li>
@@ -178,7 +182,7 @@ const df = 0;
                       <li
                         key={index}
                         className="text-black p-4 hover:bg-gray-100 cursor-pointer"
-                        onClick={handelToCityPickerDeactive}
+                        onClick={handelGoingToList}
                       >
                         {city.division}
                       </li>
