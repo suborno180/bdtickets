@@ -1,9 +1,12 @@
 "use client";
+import { setJourneyDate } from "@/redux/features/filterTicketsSlice";
+import { RootState } from "@/redux/store";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { LuSearch } from "react-icons/lu";
 import { RxCross2 } from "react-icons/rx";
+import { useDispatch, useSelector } from "react-redux";
 
 interface City {
   name: string;
@@ -55,12 +58,20 @@ const DatePickerComponents: React.FC<LocationPickerProps> = ({
     };
   }, [isCityFromPickerActive, isCityToPickerActive]);
 
+  const dispatch = useDispatch();
+  const filterTickets = useSelector((state: RootState) => state.filterTickets);
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const handleDateSelect = (date: Date) => {
     setSelectedDate(date);
     // You can perform any additional actions here, such as updating other state variables or making API calls.
   };
+
+  const handelDate = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    dispatch(setJourneyDate(value))
+    
+  }
 
   return (
     <div className="w-full">
@@ -74,7 +85,7 @@ const DatePickerComponents: React.FC<LocationPickerProps> = ({
               <span className="text-black text-[10px]">JOURNEY DATE</span>
             </div>
      
-            <input  type="date" className="text-black text-[12px] bg-transparent outline-none font-bold" name="" id="datePicker"  />
+            <input onChange={handelDate} type="date" className="text-black text-[12px] bg-transparent outline-none font-bold" name="" id="datePicker"  />
           </div>
           
 

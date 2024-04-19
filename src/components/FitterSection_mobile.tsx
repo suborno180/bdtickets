@@ -39,7 +39,7 @@ const FitterSection = ({apiData}: {apiData: any}) => {
         <div className="w-full min-h-64 bg-gray-200">
           <FilterTab tabs={tabsData} />
           <div className="w-full h-full py-4 px-4 md:px-8 flex flex-col gap-4">
-            <LocationPickerComponents goingFrom="Amuna" cities={citiesData} apiData={apiData} />
+            <LocationPickerComponents />
             <DatePickerComponents goingFrom="Amuna" cities={citiesData} />
           </div>
         </div>

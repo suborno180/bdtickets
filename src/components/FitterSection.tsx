@@ -33,10 +33,7 @@ const FitterSection = () => {
             <div className="w-full h-52 p-10 pb-0 bg-white rounded-xl grid grid-rows-2">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <LocationPickerComponents
-                    goingFrom="Amuna"
-                    cities={citiesData}
-                  />
+                  <LocationPickerComponents />
                 </div>
                 <div>
                   <DatePickerComponents goingFrom="Amuna" cities={citiesData} />

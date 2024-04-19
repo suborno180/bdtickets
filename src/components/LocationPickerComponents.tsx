@@ -9,17 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { setGoingFrom, setGoingTo } from "@/redux/features/filterTicketsSlice";
 
-interface LocationPickerProps {
-  goingFrom: string;
-  cities: any;
-  apiData?: any;
-}
 
-const LocationPickerComponents: React.FC<LocationPickerProps> = ({
-  goingFrom,
-  cities,
-  apiData,
-}) => {
+
+const LocationPickerComponents = () => {
   const [isCityFromPickerActive, setCityFromPickerActive] = useState(false);
   const [isCityToPickerActive, setCityToPickerActive] = useState(false);
   const [isApiData, setApiData] = useState<ApiData[]>([]);
@@ -55,14 +47,14 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
     student.division.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handelGoingFromList = (event: ChangeEvent<HTMLInputElement>) => {
-    const { innerText } = event.target;
+  const handelGoingFromList = (event: React.MouseEvent<HTMLLIElement>) => {
+    const innerText = (event.target as HTMLLIElement).innerText;
     setCityFromPickerActive(false);
     // redux function
     dispatch(setGoingFrom(innerText));
   };
-  const handelGoingToList = (event: ChangeEvent<HTMLInputElement>) => {
-    const { innerText } = event.target;
+  const handelGoingToList = (event: React.MouseEvent<HTMLLIElement>) => {
+    const innerText = (event.target as HTMLLIElement).innerText;
     setCityToPickerActive(false);
     // redux function
     dispatch(setGoingTo(innerText));
