@@ -25,7 +25,7 @@ const FitterSection = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-screen-lg mx-auto rounded-lg p-8">
             {/* Your content goes here */}
-            <div className="max-w-[70%] max-[50%] min-h-[70px] mx-auto bg-white rounded-xl rounded-b-none">
+            <div className="max-w-[70%] md:max-w-[50%] min-h-[70px] mx-auto bg-white rounded-xl rounded-b-none">
               <div className="p-4">
                 <FilterTab tabs={tabsData} />
               </div>
