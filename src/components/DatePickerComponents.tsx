@@ -74,7 +74,7 @@ const DatePickerComponents: React.FC<LocationPickerProps> = ({
               <span className="text-black text-[10px]">JOURNEY DATE</span>
             </div>
      
-            <input type="date" className="text-black text-[12px] bg-transparent outline-none font-bold" name="" id="datePicker"  />
+            <input value={new Date().toISOString().split('T')[0]} type="date" className="text-black text-[12px] bg-transparent outline-none font-bold" name="" id="datePicker"  />
           </div>
           
 
@@ -102,3 +102,4 @@ const DatePickerComponents: React.FC<LocationPickerProps> = ({
 };
 
 export default DatePickerComponents;
+
