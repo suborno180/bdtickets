@@ -65,7 +65,7 @@ const DatePickerComponents: React.FC<LocationPickerProps> = ({
   return (
     <div className="w-full">
       <div className="w-full min-h-14 bg-white rounded-md border-[0.5px] border-red-600 grid grid-cols-2">
-        <div className="w-full h-full border-0 border-red-600 border-r relative">
+        <label htmlFor="datePicker" className="w-full h-full border-0 border-red-600 border-r relative">
           <div
             className="w-full h-full px-4 cursor-pointer"
             onClick={handelFromCityPickerActive}
@@ -79,7 +79,7 @@ const DatePickerComponents: React.FC<LocationPickerProps> = ({
           
 
           
-        </div>
+        </label>
         <div className="w-full h-full relative">
           <div className="w-full px-6 h-full  cursor-pointer">
             <div>
