@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import LocationPickerComponents from "./LocationPickerComponents";
 import FilterTab from "./FilterTab";
+import DatePickerComponents from "./DatePickerComponents";
 
 const FitterSection = () => {
   const citiesData = [
@@ -28,7 +29,7 @@ const FitterSection = () => {
           <FilterTab tabs={tabsData} />
           <div className="w-full h-full py-4 px-4 md:px-8 flex flex-col gap-4">
             <LocationPickerComponents goingFrom="Amuna" cities={citiesData} />
-            <LocationPickerComponents goingFrom="Amuna" cities={citiesData} />
+            <DatePickerComponents goingFrom="Amuna" cities={citiesData} />
           </div>
         </div>
       </div>

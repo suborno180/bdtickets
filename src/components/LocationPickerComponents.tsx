@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { LuSearch } from "react-icons/lu";
 import { RxCross2 } from "react-icons/rx";
@@ -36,6 +36,24 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
   const handelToCityPickerDeactive = () => {
     setCityToPickerActive(false);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event:any) => {
+      if (
+        event.target.closest(".city-picker") === null &&
+        (isCityFromPickerActive || isCityToPickerActive)
+      ) {
+        handelFromCityPickerDeactive();
+        handelToCityPickerDeactive();
+      }
+    };
+  
+    document.addEventListener("click", handleClickOutside);
+  
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isCityFromPickerActive, isCityToPickerActive]);
 
   return (
     <div className="w-full">
@@ -108,17 +126,16 @@ const LocationPickerComponents: React.FC<LocationPickerProps> = ({
           </button>
         </div>
         <div className="w-full h-full relative">
-          <div
-            className="w-full h-full px-6 cursor-pointer"
-            onClick={handelToCityPickerActive}
-          >
-            <div>
-              <span className="text-black text-[10px]">GOING TO</span>
-            </div>
-            <div>
-              <span className="font-bold text-black text-[12px]">
-                Destination
-              </span>
+          <div className="w-full px-6 h-full  cursor-pointer">
+            <div onClick={handelToCityPickerActive}>
+              <div>
+                <span className="text-black text-[10px]">GOING TO</span>
+              </div>
+              <div>
+                <span className="font-bold text-black text-[12px]">
+                  Destination
+                </span>
+              </div>
             </div>
           </div>
           {isCityToPickerActive && (
