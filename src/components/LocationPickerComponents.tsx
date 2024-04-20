@@ -8,19 +8,22 @@ import { ApiData } from "./FitterSection_mobile";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { setGoingFrom, setGoingTo } from "@/redux/features/filterTicketsSlice";
-
-
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const LocationPickerComponents = () => {
   const [isCityFromPickerActive, setCityFromPickerActive] = useState(false);
   const [isCityToPickerActive, setCityToPickerActive] = useState(false);
   const [isApiData, setApiData] = useState<ApiData[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://bdapis.com/api/v1.1/divisions")
       .then((res) => res.json())
-      .then((json) => setApiData(json.data));
+      .then((json) => {
+        setApiData(json.data);
+        setLoading(false);
+      });
   }, []);
 
   const handelFromCityPickerActive = () => {
@@ -68,7 +71,6 @@ const LocationPickerComponents = () => {
   const exchangeCityHandeler = (from: string, to: string) => {
     dispatch(setGoingFrom(to));
     dispatch(setGoingTo(from));
-    
   };
 
   return (
@@ -121,15 +123,25 @@ const LocationPickerComponents = () => {
                 </div>
                 <div className="w-full h-full">
                   <ul className="w-full min-h-[90vh] max-h-64 overflow-y-auto">
-                    {filteredApiData.map((city, index) => (
-                      <li
-                        key={index}
-                        className="text-black p-4 hover:bg-gray-100 cursor-pointer"
-                        onClick={handelGoingFromList}
-                      >
-                        {city.division}
-                      </li>
-                    ))}
+                    {isLoading ? (
+                      <>
+                        <div className="w-full min-h-[90vh] md:min-h-64 grid place-content-center">
+                          <AiOutlineLoading3Quarters className="animate-spin text-3xl" />
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        {filteredApiData.map((city, index) => (
+                          <li
+                            key={index}
+                            className="text-black p-4 hover:bg-gray-100 cursor-pointer"
+                            onClick={handelGoingFromList}
+                          >
+                            {city.division}
+                          </li>
+                        ))}
+                      </>
+                    )}
                   </ul>
                 </div>
               </div>
