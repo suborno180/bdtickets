@@ -1,10 +1,17 @@
+"use client"
 import React from "react";
 import LocationPickerComponents from "./LocationPickerComponents";
 import DatePickerComponents from "./DatePickerComponents";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import FilterTab from "./FilterTab";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { setGoingFrom, setGoingTo } from "@/redux/features/filterTicketsSlice";
 
 const FitterSection = () => {
+  const dispatch = useDispatch();
+  const filterTickets = useSelector((state: RootState) => state.filterTickets);
   const citiesData = [
     { name: "Rajshahi" },
     { name: "Dhaka" },
@@ -18,6 +25,61 @@ const FitterSection = () => {
     { label: "HOTEL", icon: "/hotel-2-copy.svg" },
     { label: "DEALS", icon: "/offer-alt-copy2.svg" },
   ];
+
+  const locations = [
+    {
+      "from": "Dhaka",
+      "to": "Chittagong",
+      "fare": 1100,
+      "date": "11-06-24"
+    },
+    {
+      "from": "Dhaka",
+      "to": "Chittagong",
+      "fare": 1100,
+      "date": "30-04-24"
+    },
+    {
+      "from": "Dhaka",
+      "to": "Chittagong",
+      "fare": 1100,
+      "date": "01-05-24"
+    },
+    {
+      "from": "Barisal",
+      "to": "Chittagong",
+      "fare": 900,
+      "date": "11-05-24"
+    },
+    {
+      "from": "Barisal",
+      "to": "Chittagong",
+      "fare": 1200,
+      "date": "21-05-24"
+    },
+    {
+      "from": "Barisal",
+      "to": "Chittagong",
+      "fare": 900,
+      "date": "14-05-24"
+    },
+    {
+      "from": "Barisal",
+      "to": "Rajshahi",
+      "fare": 1900,
+      "date": "28-04-24"
+    },
+    {
+      "from": "Barisal",
+      "to": "Rajshahi",
+      "fare": 1900,
+      "date": "02-05-24"
+    }
+  ]
+  const exchangeCityHandeler = (from: string, to: string) => {
+    dispatch(setGoingFrom(from));
+    dispatch(setGoingTo(to));
+  };
   return (
     <div className="w-full min-h-[50vh] bg-[url(/banner-web.png)] bg-center bg-cover bg-no-repeat relative ">
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
@@ -46,12 +108,21 @@ const FitterSection = () => {
                       Trending Searches:
                     </span>
                   </div>
-                  <div className="flex flex-wrap items-center gap-4">
-                    <div className="p-2 py-1 text-black bg-gray-200 hover:bg-gray-300 rounded-md text-[10px] flex items-center gap-1 cursor-pointer">
-                      <span>Dhaka</span>
-                      <IoIosArrowRoundForward size={15} />
-                      <span>Rajshahi</span>
-                    </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {
+                      locations.map((e) => {
+                        return (
+                          <>
+                            <div className="p-2 py-1 text-black bg-gray-200 hover:bg-gray-300 rounded-md text-[10px] flex items-center gap-1 cursor-pointer" onClick={()=>exchangeCityHandeler(e.from,e.to)}>
+                              <span>{e.from}</span>
+                              <IoIosArrowRoundForward size={15} />
+                              <span>{e.to}</span>
+                            </div>
+                          </>
+                        )
+                      })
+                    }
+
                   </div>
                 </div>
                 <div className="grid place-content-center translate-y-5">
