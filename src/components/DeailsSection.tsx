@@ -4,7 +4,7 @@ import DealsCard from "./ui/DealsCard";
 const DeailsSection = () => {
   return (
     <>
-      <section className="my-10">
+      <section className="my-10 p-4 lg:p-0">
         <div className="container max-w-[1200px] mx-auto">
           <div className="w-full grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <DealsCard />
