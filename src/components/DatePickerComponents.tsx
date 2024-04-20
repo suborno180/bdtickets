@@ -73,6 +73,14 @@ const DatePickerComponents: React.FC<LocationPickerProps> = ({
     
   }
 
+  useEffect(() => {
+    const today = new Date().toISOString().split('T')[0];
+    const input = document.getElementById("datePicker") as HTMLInputElement;
+    if (input) {
+        input.setAttribute('min', today);
+    }
+}, []);
+
   return (
     <div className="w-full">
       <div className="w-full min-h-14 bg-white rounded-md border-[0.5px] border-red-600 grid grid-cols-2">
@@ -85,7 +93,7 @@ const DatePickerComponents: React.FC<LocationPickerProps> = ({
               <span className="text-black text-[10px]">JOURNEY DATE</span>
             </div>
      
-            <input value={filterTickets.journeyDate} onChange={handelDate} type="date" className="text-black text-[12px] bg-transparent outline-none font-bold" name="" id="datePicker"  />
+            <input value={filterTickets.journeyDate} onChange={handelDate} type="date" className="text-black text-[12px] bg-transparent outline-none font-bold" name="dateInput" id="datePicker"  />
           </div>
           
 
