@@ -1,3 +1,4 @@
+import DeailsSection from "@/components/DeailsSection";
 import HeroSection from "@/components/HeroSection";
 import LocationPickerComponents from "@/components/LocationPickerComponents";
 import Image from "next/image";
@@ -12,8 +13,10 @@ export default function Home() {
   return (
     <>
       <main>
-        <HeroSection/>
-
+        <HeroSection />
+        <div>
+          <DeailsSection />
+        </div>
       </main>
     </>
   );
