@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,7 +36,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
-          <div className="flex items-center">
+          <Link href={'/'} className="flex items-center">
             <Image
               className="h-8 mr-4"
               src="/logo-new-2.png"
@@ -43,12 +44,12 @@ const Header = () => {
               width={150}
               height={100}
             />
-          </div>
+          </Link>
           <div className="flex items-center gap-2">
-            <a href="#" className="flex items-center gap-2 p-2 text-[13px] hover:text-red-600">
+            <Link href="/" className="flex items-center gap-2 p-2 text-[13px] hover:text-red-600">
                 <Image src="/bus-black-icons.svg" alt="icons" width={25} height={25}  /> 
                 BUS
-            </a>
+            </Link>
             <a href="#" className="flex items-center gap-2 p-2 text-[13px] hover:text-red-600">
                 <Image src="/air-black.svg" alt="icons" width={25} height={25}  /> 
                 AIR
