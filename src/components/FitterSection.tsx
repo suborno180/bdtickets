@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import LocationPickerComponents from "./LocationPickerComponents";
 import DatePickerComponents from "./DatePickerComponents";
@@ -7,7 +7,11 @@ import FilterTab from "./FilterTab";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { setGoingFrom, setGoingTo } from "@/redux/features/filterTicketsSlice";
+import {
+  setGoingFrom,
+  setGoingTo,
+  setJourneyDate,
+} from "@/redux/features/filterTicketsSlice";
 
 const FitterSection = () => {
   const dispatch = useDispatch();
@@ -28,40 +32,40 @@ const FitterSection = () => {
 
   const locations = [
     {
-      "from": "Dhaka",
-      "to": "Chittagong",
-      "fare": 1100,
-      "date": "11-06-24"
+      from: "Dhaka",
+      to: "Chittagong",
+      fare: 1100,
+      date: "11-06-24",
     },
     {
-      "from": "Dhaka",
-      "to": "Barisal",
-      "fare": 900,
-      "date": "14-05-24"
+      from: "Dhaka",
+      to: "Barisal",
+      fare: 900,
+      date: "14-05-24",
     },
     {
-      "from": "Dhaka",
-      "to": "Coxs-Bazar",
-      "fare": 900,
-      "date": "14-05-24"
+      from: "Dhaka",
+      to: "Coxs-Bazar",
+      fare: 900,
+      date: "14-05-24",
     },
     {
-      "from": "Barisal",
-      "to": "Chittagong",
-      "fare": 900,
-      "date": "14-05-24"
+      from: "Barisal",
+      to: "Chittagong",
+      fare: 900,
+      date: "14-05-24",
     },
     {
-      "from": "Barisal",
-      "to": "Rajshahi",
-      "fare": 1900,
-      "date": "28-04-24"
+      from: "Barisal",
+      to: "Rajshahi",
+      fare: 1900,
+      date: "28-04-24",
     },
-
-  ]
-  const exchangeCityHandeler = (from: string, to: string) => {
+  ];
+  const exchangeCityHandeler = (from: string, to: string, date: string) => {
     dispatch(setGoingFrom(from));
     dispatch(setGoingTo(to));
+    dispatch(setJourneyDate(date));
   };
   return (
     <div className="w-full min-h-[50vh] bg-[url(/banner-web.png)] bg-center bg-cover bg-no-repeat relative ">
@@ -92,24 +96,26 @@ const FitterSection = () => {
                     </span>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
-                    {
-                      locations.map((e) => {
-                        return (
-                          <>
-                            <div className="p-2 py-1 text-black bg-gray-200 hover:bg-gray-300 rounded-md text-[10px] flex items-center gap-1 cursor-pointer" onClick={()=>exchangeCityHandeler(e.from,e.to)}>
-                              <span>{e.from}</span>
-                              <IoIosArrowRoundForward size={15} />
-                              <span>{e.to}</span>
-                            </div>
-                          </>
-                        )
-                      })
-                    }
-
+                    {locations.map((e) => {
+                      return (
+                        <>
+                          <div
+                            className="p-2 py-1 text-black bg-gray-200 hover:bg-gray-300 rounded-md text-[10px] flex items-center gap-1 cursor-pointer"
+                            onClick={() => exchangeCityHandeler(e.from, e.to, e.date)}
+                          >
+                            <span>{e.from}</span>
+                            <IoIosArrowRoundForward size={15} />
+                            <span>{e.to}</span>
+                          </div>
+                        </>
+                      );
+                    })}
                   </div>
                 </div>
                 <div className="grid place-content-center translate-y-5">
-                  <button className="bg-red-600 hover:bg-red-700 p-3 px-10 rounded-lg text-white">Search Bus</button>
+                  <button className="bg-red-600 hover:bg-red-700 p-3 px-10 rounded-lg text-white">
+                    Search Bus
+                  </button>
                 </div>
               </div>
             </div>
