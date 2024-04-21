@@ -61,11 +61,6 @@ const DatePickerComponents: React.FC<LocationPickerProps> = ({
   const dispatch = useDispatch();
   const filterTickets = useSelector((state: RootState) => state.filterTickets);
 
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const handleDateSelect = (date: Date) => {
-    setSelectedDate(date);
-    // You can perform any additional actions here, such as updating other state variables or making API calls.
-  };
 
   const handelDate = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;

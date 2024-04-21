@@ -72,6 +72,7 @@ const LocationPickerComponents = () => {
     dispatch(setGoingFrom(to));
     dispatch(setGoingTo(from));
   };
+  
 
   return (
     <div className="w-full">

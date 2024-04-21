@@ -12,6 +12,7 @@ import {
   setGoingTo,
   setJourneyDate,
 } from "@/redux/features/filterTicketsSlice";
+import SearchButton from "./SearchButton";
 
 const FitterSection = () => {
   const dispatch = useDispatch();
@@ -113,9 +114,8 @@ const FitterSection = () => {
                   </div>
                 </div>
                 <div className="grid place-content-center translate-y-5">
-                  <button className="bg-red-600 hover:bg-red-700 p-3 px-10 rounded-lg text-white">
-                    Search Bus
-                  </button>
+                  
+                  <SearchButton />
                 </div>
               </div>
             </div>
