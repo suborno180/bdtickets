@@ -50,8 +50,8 @@ const Header = () => {
                 BUS
             </a>
             <a href="#" className="flex items-center gap-2 p-2 text-[13px] hover:text-red-600">
-                <Image src="/bus-black-icons.svg" alt="icons" width={25} height={25}  /> 
-                BUS
+                <Image src="/air-black.svg" alt="icons" width={25} height={25}  /> 
+                AIR
             </a>
           </div>
         </div>
