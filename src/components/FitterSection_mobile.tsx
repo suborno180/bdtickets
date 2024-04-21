@@ -3,6 +3,7 @@ import React from "react";
 import LocationPickerComponents from "./LocationPickerComponents";
 import FilterTab from "./FilterTab";
 import DatePickerComponents from "./DatePickerComponents";
+import SearchButton from "./SearchButton";
   
 export interface ApiData {
   _id: string,
@@ -41,6 +42,11 @@ const FitterSection = ({apiData}: {apiData: any}) => {
           <div className="w-full h-full py-4 px-4 md:px-8 flex flex-col gap-4">
             <LocationPickerComponents />
             <DatePickerComponents goingFrom="Amuna" cities={citiesData} />
+          </div>
+          <div className="w-full grid place-content-center">
+          <div className="scale-75 -translate-y-1">
+          <SearchButton />
+          </div>
           </div>
         </div>
       </div>
