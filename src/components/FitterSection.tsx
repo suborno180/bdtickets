@@ -36,33 +36,34 @@ const FitterSection = () => {
       from: "Dhaka",
       to: "Chittagong",
       fare: 1100,
-      date: "11-06-24",
+      date: "2024-06-11",
     },
     {
       from: "Dhaka",
       to: "Barisal",
       fare: 900,
-      date: "14-05-24",
+      date: "2024-05-14",
     },
     {
       from: "Dhaka",
       to: "Coxs-Bazar",
       fare: 900,
-      date: "15-05-24",
+      date: "2024-05-15",
     },
     {
       from: "Barisal",
       to: "Chittagong",
       fare: 900,
-      date: "14-05-24",
+      date: "2024-05-14",
     },
     {
       from: "Barisal",
       to: "Rajshahi",
       fare: 1900,
-      date: "28-05-24",
+      date: "2024-05-28",
     },
-  ];
+];
+
   const exchangeCityHandeler = (from: string, to: string, date: string) => {
     dispatch(setGoingFrom(from));
     dispatch(setGoingTo(to));
