@@ -47,7 +47,7 @@ const FitterSection = () => {
       from: "Dhaka",
       to: "Coxs-Bazar",
       fare: 900,
-      date: "14-05-24",
+      date: "15-05-24",
     },
     {
       from: "Barisal",
@@ -59,7 +59,7 @@ const FitterSection = () => {
       from: "Barisal",
       to: "Rajshahi",
       fare: 1900,
-      date: "28-04-24",
+      date: "28-05-24",
     },
   ];
   const exchangeCityHandeler = (from: string, to: string, date: string) => {
