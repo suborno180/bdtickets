@@ -76,7 +76,7 @@ const page = ({ params }: { params: { id: string } }) => {
       </div>
       <div className="container mx-auto py-20 px-4">
         <div className="max-w-[800px] min-h-[400px] bg-white mx-auto rounded-2xl shadow-md grid place-content-center">
-          <div className="flex flex-col items-center justify-center text-center">
+          <div className="flex flex-col items-center justify-center text-center p-4">
             <Image src="/404.svg" alt="" width={300} height={250} />
             <h1 className="text-2xl font-bold my-4">{`Sorry, we didn't find any routes for your search.`}</h1>
           </div>
