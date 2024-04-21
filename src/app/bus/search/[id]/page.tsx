@@ -79,9 +79,6 @@ const page = ({ params }: { params: { id: string } }) => {
           <div className="flex flex-col items-center justify-center text-center">
             <Image src="/404.svg" alt="" width={300} height={250} />
             <h1 className="text-2xl font-bold my-4">{`Sorry, we didn't find any routes for your search.`}</h1>
-            <div>
-              {location[0]} {`=>`} {location[2]}
-            </div>
           </div>
         </div>
       </div>
