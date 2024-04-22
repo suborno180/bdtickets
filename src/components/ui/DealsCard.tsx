@@ -36,7 +36,7 @@ const DealsCard = () => {
             <div>
             
             {/* regular price */}
-              <h1 className="text-sm">BDT 450</h1>
+              <del className="text-sm">BDT 450</del>
               {/* offer price*/}
             
               <h1 className="text-2xl text-red-500">BDT 400</h1>
