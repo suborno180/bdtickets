@@ -17,7 +17,7 @@ const page = ({ params }: { params: { id: string } }) => {
 
 
   return (
-    <div className="w-full min-h-screen bg-gray-400">
+    <div className="w-full min-h-screen bg-gray-200">
       <div className="w-full min-h-64 bg-[url(/banner-bg-sm.webp)] bg-center bg-no-repeat bg-cover flex items-center justify-start relative">
         <div className="w-full absolute top-0 left-0 min-h-64 bg-black/50"></div>
         <div className="w-full absolute top-0 left-0 min-h-64">
