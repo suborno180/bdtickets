@@ -5,8 +5,6 @@ import DatePickerComponents from "./DatePickerComponents";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import FilterTab from "./FilterTab";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
 import {
   setGoingFrom,
   setGoingTo,
@@ -16,7 +14,6 @@ import SearchButton from "./SearchButton";
 
 const FitterSection = () => {
   const dispatch = useDispatch();
-  const filterTickets = useSelector((state: RootState) => state.filterTickets);
   const citiesData = [
     { name: "Rajshahi" },
     { name: "Dhaka" },
@@ -70,7 +67,7 @@ const FitterSection = () => {
     dispatch(setJourneyDate(date));
   };
   return (
-    <div className="w-full min-h-[50vh] bg-[url(/banner-web.png)] bg-center bg-cover bg-no-repeat relative ">
+    <div className="w-full min-h-[600px] bg-[url(/banner-web.png)] bg-center bg-cover bg-no-repeat relative ">
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
         <div className="container mx-auto px-4">
@@ -115,7 +112,6 @@ const FitterSection = () => {
                   </div>
                 </div>
                 <div className="grid place-content-center translate-y-5">
-                  
                   <SearchButton />
                 </div>
               </div>
